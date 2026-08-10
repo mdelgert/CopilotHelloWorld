@@ -148,7 +148,24 @@ One-time settings, done in GitHub (Settings tab, or via `gh api`), not in code:
     -F security_and_analysis[secret_scanning_push_protection][status]=enabled
   ```
 
-### 4. Do the actual work: one branch per unit of work
+### 4. One session (or branch) per unit of work
+
+**The model to follow: 1 session = 1 branch = 1 worktree folder = 1 unit of work = 1 pull
+request.** Do not reuse the same branch/session across multiple unrelated changes just because
+its first change already merged — this is the single biggest source of confusion when learning
+this workflow.
+
+- **Starting something new and unrelated?** Start a **new session** (or, doing it manually,
+  `git checkout -b my-change main` from an up-to-date `main`). This gives you a clean branch and
+  folder with no leftover history from a previous, already-merged change.
+- **Still iterating on the same not-yet-merged change?** Stay in the same session/branch and
+  keep going — don't create a new one for every follow-up commit within one change.
+- **A new change genuinely depends on another branch's unmerged work?** This is the one
+  exception — explicitly base the new session/branch on that other branch instead of on `main`
+  (a "stacked" change). Otherwise, always branch from the latest `main`.
+- **Once a session's pull request merges, treat that session as finished.** Archive it (or just
+  stop using it) rather than adding the next unrelated request to it. If you ask for something
+  new in a session whose work already merged, expect to be offered a fresh session instead.
 
 Never commit directly to `main`. For every change, however small:
 
@@ -172,6 +189,11 @@ Never commit directly to `main`. For every change, however small:
 7. **Merge once checks are green**:
    ```bash
    gh pr merge <number> --squash --delete-branch
+   ```
+8. **Archive the session (or delete the local branch) now that its work has merged**, and start
+   the next request in a new one:
+   ```bash
+   git branch -d my-change
    ```
 
 ### 5. The fastest way to do this in practice
