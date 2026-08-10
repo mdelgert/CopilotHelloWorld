@@ -56,4 +56,28 @@ public sealed class GreeterTests
     {
         Assert.Throws<ArgumentException>(() => Greeter.Greet(name, 3));
     }
+
+    [Fact]
+    public void Greet_WithTimestamp_ReturnsMessageContainingGreetingAndTimestamp()
+    {
+        var timestamp = new DateTimeOffset(2024, 3, 15, 9, 30, 0, TimeSpan.FromHours(-5));
+
+        var result = Greeter.Greet("World", timestamp);
+
+        Assert.Equal("Hello, World! The current time is 2024-03-15 09:30:00 -05:00.", result);
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void Greet_WithTimestamp_ThrowsArgumentException_WhenNameIsNullOrWhitespace(string name)
+    {
+        Assert.Throws<ArgumentException>(() => Greeter.Greet(name, DateTimeOffset.Now));
+    }
+
+    [Fact]
+    public void Greet_WithTimestamp_ThrowsArgumentNullException_WhenNameIsNull()
+    {
+        Assert.Throws<ArgumentNullException>(() => Greeter.Greet(null!, DateTimeOffset.Now));
+    }
 }
