@@ -7,5 +7,8 @@ int repeatCount = args.Length > 0 && int.TryParse(args[0], out int parsedCount)
     : defaultRepeatCount;
 
 Version version = Assembly.GetExecutingAssembly().GetName().Version ?? new Version(0, 0, 0, 0);
-Console.WriteLine(Greeter.Greet("World", repeatCount, DateTimeOffset.Now, version));
+foreach (string planet in Planets.All)
+{
+    Console.WriteLine(Greeter.Greet(planet, repeatCount, DateTimeOffset.Now, version));
+}
 
