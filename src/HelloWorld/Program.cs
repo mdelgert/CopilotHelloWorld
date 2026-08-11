@@ -6,7 +6,6 @@ int repeatCount = args.Length > 0 && int.TryParse(args[0], out int parsedCount)
     ? parsedCount
     : defaultRepeatCount;
 
-Version? version = Assembly.GetExecutingAssembly().GetName().Version;
-Console.WriteLine($"HelloWorld v{version}");
-Console.WriteLine(Greeter.Greet("World", repeatCount, DateTimeOffset.Now));
+Version version = Assembly.GetExecutingAssembly().GetName().Version ?? new Version(0, 0, 0, 0);
+Console.WriteLine(Greeter.Greet("World", repeatCount, DateTimeOffset.Now, version));
 
