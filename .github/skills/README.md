@@ -54,3 +54,6 @@ you want to force its use.
   "ship this" or "ship and merge". This is intentionally scoped to low-stakes/learning repos
   with no branch protection on `main` — do not copy it into a repo where `main` is protected
   or real users depend on it.
+- `.github/skills/fix-gh-account-auth/SKILL.md` fixes `gh` CLI calls that fail because the
+  wrong GitHub account is active (e.g. an Enterprise Managed User token conflicting with a
+  personal account), by clearing/switching accounts so `gh` uses the correct credential.

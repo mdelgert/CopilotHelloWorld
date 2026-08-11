@@ -37,6 +37,9 @@ branch protection** (like this CopilotHelloWorld repo). Do not reuse it in a rep
 
 ## Guardrails
 
+- If any `gh` command fails with an authorization/permission error (e.g. an Enterprise
+  Managed User conflict), apply the `fix-gh-account-auth` skill first to get the correct
+  account active, then retry.
 - Before merging, double check `gh api repos/{owner}/{repo}/branches/main/protection` (or
   equivalent) does not show required reviews/status checks. If it does, stop and fall back
   to just opening the PR for manual review instead of merging.
