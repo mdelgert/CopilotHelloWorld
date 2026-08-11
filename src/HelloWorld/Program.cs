@@ -12,3 +12,8 @@ foreach (string planet in Planets.All)
     Console.WriteLine(Greeter.Greet(planet, repeatCount, DateTimeOffset.Now, version));
 }
 
+foreach (string name in Names.All)
+{
+    Console.WriteLine(Greeter.Greet(name, repeatCount, DateTimeOffset.Now, version));
+}
+
