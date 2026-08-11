@@ -17,6 +17,13 @@ public sealed class NamesTests
             "Hannah",
         ];
 
-        Assert.Equal(expected, Names.All);
+        Assert.Equal(expected, Names.All.Select(person => person.Name));
+    }
+
+    [Fact]
+    public void All_ContainsUniqueBirthdatesForEveryPerson()
+    {
+        Assert.All(Names.All, person => Assert.NotEqual(default, person.Birthdate));
+        Assert.Equal(Names.All.Count, Names.All.Select(person => person.Birthdate).Distinct().Count());
     }
 }
