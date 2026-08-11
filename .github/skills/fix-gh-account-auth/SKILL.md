@@ -1,6 +1,12 @@
 ---
 name: fix-gh-account-auth
-description: Guide for fixing GitHub CLI (gh) commands that fail because the wrong GitHub account is active, including Enterprise Managed User (EMU) token conflicts. Use this when a gh command fails with an authorization/permission error (e.g. "Unauthorized: As an Enterprise Managed User, you cannot access this content", "Resource not accessible", or 403/404 errors on a repo you know you have access to), or before running gh pr create / gh pr merge / gh api against a repo owned by a personal account while a work/EMU account may also be logged in.
+description: >-
+  Guide for fixing GitHub CLI (gh) commands that fail because the wrong GitHub account is
+  active, including Enterprise Managed User (EMU) token conflicts. Use this when a gh command
+  fails with an authorization/permission error (e.g. "Unauthorized: As an Enterprise Managed
+  User, you cannot access this content", "Resource not accessible", or 403/404 errors on a
+  repo you know you have access to), or before running gh pr create / gh pr merge / gh api
+  against a repo owned by a personal account while a work/EMU account may also be logged in.
 license: MIT
 ---
 
